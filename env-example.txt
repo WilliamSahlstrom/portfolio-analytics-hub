@@ -1,0 +1,7 @@
+# Local MySQL database configuration
+ENVIRONMENT=local
+
+LOCAL_MYSQL_HOST=localhost
+LOCAL_MYSQL_USER=user
+LOCAL_MYSQL_PASSWORD=secret
+LOCAL_MYSQL_DATABASE=local_db
