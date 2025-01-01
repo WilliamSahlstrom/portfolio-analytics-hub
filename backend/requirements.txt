@@ -3,3 +3,4 @@ pytest
 gunicorn
 mysql-connector-python
 python-dotenv
+psycopg2

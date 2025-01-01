@@ -2,6 +2,7 @@ from flask import Flask, jsonify
 import mysql.connector
 from dotenv import load_dotenv
 import os
+import psycopg2
 
 # Load environment variables from .env file only in local development
 if os.getenv('ENVIRONMENT', 'local') == 'local':  # Check if we're in local environment
@@ -24,10 +25,7 @@ elif environment == 'test':
     app.config['MYSQL_PASSWORD'] = os.getenv('TEST_MYSQL_PASSWORD')
     app.config['MYSQL_DATABASE'] = os.getenv('TEST_MYSQL_DATABASE')
 elif environment == 'production':
-    app.config['MYSQL_HOST'] = os.getenv('PROD_MYSQL_HOST')
-    app.config['MYSQL_USER'] = os.getenv('PROD_MYSQL_USER')
-    app.config['MYSQL_PASSWORD'] = os.getenv('PROD_MYSQL_PASSWORD')
-    app.config['MYSQL_DATABASE'] = os.getenv('PROD_MYSQL_DATABASE')
+    db_connection = psycopg2.connect(os.getenv('DATABASE_URL'))
 
 # Establish a connection to MySQL
 db_connection = mysql.connector.connect(
